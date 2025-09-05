@@ -29,6 +29,7 @@ echo "<html lang = 'en'>";
         echo "</br>";
 
         echo "<a href = 'page.php'>page 2</a>"; //href links
+        echo "</br>";
         echo "<a href = 'page2.php'>page 3</a>";
         echo "</br>";
 

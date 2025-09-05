@@ -12,6 +12,7 @@
         echo "<img src='cute_bird.jpg' alt='cute bird'>";
         echo "<br>";
         echo "<a href = 'index.php'>back to home</a>"; //href links
+        echo "</br>";
         echo "<a href = 'page2.php'>page 3</a>";
     echo "</body>";
     echo "</html>";
