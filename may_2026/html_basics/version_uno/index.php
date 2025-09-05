@@ -2,10 +2,11 @@
 //have to suffer through echo hell because of it system being shit
 echo "<!DOCTYPE html>"; //declares html - correct structure
 
-echo "<html>";
+echo "<html lang = 'en'>";
 
     echo "<head>";
        echo "<title>it is i </title>";
+
     echo "</head>";
 
     echo "<body>";
@@ -44,7 +45,7 @@ echo "<html>";
         echo "</table>";
 
         echo "</br>";
-        echo "<img src = 'glados_potatOS.jpg'>"; //image
+        echo "<img src = 'glados_potatOS.jpg' alt='picture of glados potato'>"; //image
     echo "</body>";
 
 echo "</html>";
