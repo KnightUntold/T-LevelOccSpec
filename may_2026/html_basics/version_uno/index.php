@@ -28,7 +28,8 @@ echo "<html lang = 'en'>";
         echo "<strong>text</strong>"; //bold
         echo "</br>";
 
-        echo "<a href = 'page.php'>text</a>"; //href links
+        echo "<a href = 'page.php'>page 2</a>"; //href links
+        echo "<a href = 'page2.php'>page 3</a>";
         echo "</br>";
 
         echo "<table>"; //table
@@ -46,6 +47,18 @@ echo "<html lang = 'en'>";
 
         echo "</br>";
         echo "<img src = 'glados_potatOS.jpg' alt='picture of glados potato'>"; //image
+        echo "</br>";
+
+        echo "<ul>"; //unordered list
+            echo "<li>text</li>"; //list item
+        echo "</ul>";
+        echo "</br>";
+
+        echo "<ol>"; //ordered list
+        echo "<li>text</li>"; //list item
+        echo "</ol>";
+        echo "</br>";
+
     echo "</body>";
 
 echo "</html>";
