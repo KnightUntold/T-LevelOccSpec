@@ -12,7 +12,7 @@ echo "<meta charset='UTF-8'>";
             echo "<ul>";
                 echo "<li><a href='index.php'>Home</a></li>";
                 echo "<li><a href='about.php'>About</a></li>";
-                echo "<li><a href='Movies.php'>Movies</a></li>";
+                echo "<li><a href='movies.php'>Movies</a></li>";
                 echo "<li><a href='contact.php'>Contact</a></li>";
 
             echo "</ul>";

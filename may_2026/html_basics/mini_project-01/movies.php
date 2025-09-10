@@ -10,7 +10,15 @@ echo "<html lang='en'>";
         echo "<title>Movies</title>";
     echo "</head>";
     echo "<body>";
-
+        echo "<h1>Studio Ghibli Films</h1>";
+        echo "<div>";
+            echo "<a href='movies/grave_of_the_fireflies.php'><img src='movie-photos/grave_of_the_fireflies.jpg' alt='grave of the fireflies'></a>";
+            echo "<a href=''><img src='' alt=''></a>";
+            echo "<a href=''><img src='' alt=''></a>";
+            echo "<a href=''><img src='' alt=''></a>";
+            echo "<a href=''><img src='' alt=''></a>";
+            echo "<a href=''><img src='' alt=''></a>";
+        echo "</div>";
     echo "</body>";
 echo "</html>";
 
