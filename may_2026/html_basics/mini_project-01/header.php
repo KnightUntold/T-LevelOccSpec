@@ -7,6 +7,16 @@ echo "<meta charset='UTF-8'>";
         echo "<link rel='stylesheet' type='text/css' href='styles.css'>";
     echo "</head>";
     echo "<body>";
+        echo "<header>";
+            echo "<h1>Studio Ghibli Movies</h1>";
+            echo "<ul>";
+                echo "<li><a href='index.php'>Home</a></li>";
+                echo "<li><a href='about.php'>About</a></li>";
+                echo "<li><a href='Movies.php'>Movies</a></li>";
+                echo "<li><a href='contact.php'>Contact</a></li>";
 
+            echo "</ul>";
+
+        echo "</header>";
     echo "</body>";
 echo "</html>";
