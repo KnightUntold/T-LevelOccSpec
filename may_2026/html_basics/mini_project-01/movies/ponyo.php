@@ -1,5 +1,5 @@
 <?php
-    include 'header.php';
+    include '../header.php';
 
     echo "<!DOCTYPE html>";
     echo "<html lang='en'>";
@@ -14,5 +14,5 @@
         echo "</body>";
     echo "</html>";
 
-    include 'footer.php';
+    include '../footer.php';
 ?>
