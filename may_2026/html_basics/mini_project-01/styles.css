@@ -1,3 +1,46 @@
+body {
+    background-color: antiquewhite;
+}
+
+header, footer {
+    background-color: lightblue;
+}
+
 img {
-    width: 200px;
+    width: 100%;
+    height: auto;
+    border-radius: 5%;
+}
+
+.movie_list {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+
+#contact-form {
+    text-align: center;
+    border: solid 1px black;
+    width: 50%;
+}
+
+input, label {
+    display: inline-block;
 }

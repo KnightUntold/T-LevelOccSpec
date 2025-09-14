@@ -1,18 +1,18 @@
 <?php
-include '../header.php';
+    require '../header.php';
 
-echo "<!DOCTYPE html>";
-echo "<html lang='en'>";
-    echo "<head>";
-        echo "<meta charset='UTF-8'>";
-        echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
-        echo "<link rel='stylesheet' type='text/css' href='../styles.css'>";
-        echo "<title>When Marnie Was Here</title>";
-    echo "</head>";
-    echo "<body>";
+    echo "<!DOCTYPE html>";
+    echo "<html lang='en'>";
+        echo "<head>";
+            echo "<meta charset='UTF-8'>";
+            echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
+            echo "<link rel='stylesheet' type='text/css' href='../styles.css'>";
+            echo "<title>When Marnie Was Here</title>";
+        echo "</head>";
+        echo "<body>";
 
-    echo "</body>";
-echo "</html>";
+        echo "</body>";
+    echo "</html>";
 
-include '../footer.php';
+    require '../footer.php';
 ?>

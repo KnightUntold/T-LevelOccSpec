@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+require 'header.php';
 
 echo "<!DOCTYPE html>";
 echo "<html lang='en'>";
@@ -18,5 +18,5 @@ echo "<html lang='en'>";
     echo "</body>";
 echo "</html>";
 
-include 'footer.php';
+require 'footer.php';
 ?>

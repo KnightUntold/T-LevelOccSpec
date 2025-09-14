@@ -7,8 +7,12 @@ echo "<html lang='en'>";
         echo "<link rel='stylesheet' type='text/css' href='styles.css'>";
     echo "</head>";
     echo "<body>";
-        echo "<footer>";
+        echo "<footer class='footer'>";
+            echo "<br>";
+            require "contact.php";
+            echo "<br>";
             echo "<hr>";
+
             echo "&copy"; echo date("Y");
         echo "</footer>";
     echo "</body>";
