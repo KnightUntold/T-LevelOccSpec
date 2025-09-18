@@ -1,18 +1,24 @@
 body {
-    background-color: antiquewhite;
+    background-color: mintcream;
 }
 
-header, footer {
+
+nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
     background-color: lightblue;
 }
 
 img {
-    width: 100%;
+    width: 70%;
     height: auto;
     border-radius: 5%;
 }
 
-.movie_list {
+/* .movie_list {
     box-sizing: border-box;
 }
 
@@ -34,6 +40,8 @@ img {
         width: 100%;
     }
 }
+
+ */
 
 #contact-form {
     text-align: center;

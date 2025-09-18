@@ -1,0 +1,26 @@
+header, footer {
+    background-color: #53DCC3;
+}
+
+header {
+    font-family: "Lucida Console", "monospace";
+}
+
+.right_bar {
+    display: inline-block;
+
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+
+}
+
+body {
+    background-color: #A0DCE9;
+}
