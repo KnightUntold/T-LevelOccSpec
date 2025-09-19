@@ -6,7 +6,8 @@
                 echo "<ul>"; #declares unordered list
                     echo "<li><a href='index.php'>Home</a></li>";
                 echo "</ul>";
-                echo "<button type='button'>Check Password Now</button>";
+                echo "<button type='button' onclick='toPassword()'>Check Password Now</button>";
+                echo "<hr>";
             echo "</div>";
         echo "</nav>";
     echo "</header>";
