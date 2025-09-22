@@ -34,7 +34,7 @@
 
 
     $length = strlen($password);
-    $uppercase = hasUpperCase($password);
+    $uppercase = hasUpperCase($password); //from here these link to functions in common.php
     $lowercase = hasLowerCase($password);
     $number = hasNumber($password);
     $special = hasSpecialCharacter($password);

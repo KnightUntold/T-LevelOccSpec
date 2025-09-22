@@ -1,6 +1,6 @@
 // image slider
 
-const slides = document.querySelectorAll(".slider img");
+const slides = document.querySelectorAll(".slider img"); //this puts the html for the slides into the image sliders
 let slideIndex = 0;
 let intervalId = null;
 
@@ -28,18 +28,18 @@ function showSlide(index){
     slides[slideIndex].classList.add("displaySlide");
 }
 
-function prevSlide(){
+function prevSlide(){ //this gives the functionality to click the previous button and also stops the images from auto changing by clearing the inter
     clearInterval(intervalId);
     slideIndex--;
     showSlide(slideIndex);
 }
 
-function nextSlide(){
+function nextSlide(){ //this gives the functionality to click to the next photo
     slideIndex++;
     showSlide(slideIndex);
 }
 
 
-function toPassword() {
+function toPassword() { //this is a function that links a button to page 2
     document.location = "page2.php";
 }
