@@ -1,15 +1,98 @@
 /*bootstrap works by adding classes to an element to get certain effects, you can call as many classes as you want so thats why it works*/
 
 .nav_bar {
-    list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: flex-start;
-    background-color: purple;
 }
 
 .nav_bar li {
     float: left;
     padding: 10px;
+    list-style-type: none;
+}
+.nav_bar li a {
+    text-decoration: none;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+
+/*borderw=s, solid*/
+
+.border_solid_black {
+    border: 1px solid black;
+}
+.border_solid_red {
+    border: 1px solid red;
+}
+.border_solid_green {
+    border: 1px solid green;
+}
+.border_solid_blue {
+    border: 1px solid blue;
+}
+.border_solid_yellow {
+    border: 1px solid yellow;
+}
+.border_solid_orange {
+    border: 1px solid orange;
+}
+.border_solid_white {
+    border: 1px solid white;
+}
+.border_solid_gray {
+    border: 1px solid gray;
+}
+
+
+
+
+/* background colours */
+
+.back_red {
+    background-color: red;
+}
+.back_green {
+    background-color: green;
+}
+.back_blue {
+    background-color: blue;
+}
+.back_yellow {
+    background-color: yellow;
+}
+.back_orange {
+    background-color: orange;
+}
+.back_pink {
+    background-color: pink;
+}
+.back_purple {
+    background-color: purple;
+}
+.back_azure{
+    background-color: azure;
+}
+.back_powderblue {
+    background-color: powderblue;
+}
+
+/* colour */
+
+.white {
+    color: white;
+}
+.black {
+    color: black;
 }

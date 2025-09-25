@@ -7,7 +7,7 @@
             echo "<link rel='stylesheet' type='text/css' href='../reuseable_code/ezstyles.css'>";
             echo "<title>Home</title>";
         echo "</head>";
-        echo "<body>";
+        echo "<body class='back_powderblue'>";
             echo "<header>";
                 require "header.php";
             echo "</header>";

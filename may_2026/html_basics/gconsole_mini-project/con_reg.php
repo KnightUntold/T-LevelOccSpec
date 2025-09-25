@@ -7,11 +7,11 @@
             echo "<link rel='stylesheet' type='text/css' href='../reuseable_code/ezstyles.css'>";
             echo "<title>Home</title>";
         echo "</head>";
-        echo "<body>";
+        echo "<body class='back_powderblue'>";
             echo "<header>";
             require "header.php";
             echo "</header>";
-    echo "<form action='register.php' method='post'>";
+    echo "<form action='register.php' method='post' class='center'>";
         echo "<label for='manufacturer'>Manufacturer</label><br>";
         echo "<input type='text' name='manufacturer' placeholder='Manufacturer'><br>";
 
