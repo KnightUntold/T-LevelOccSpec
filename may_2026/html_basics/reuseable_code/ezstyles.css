@@ -1,0 +1,15 @@
+/*bootstrap works by adding classes to an element to get certain effects, you can call as many classes as you want so thats why it works*/
+
+.nav_bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    background-color: purple;
+}
+
+.nav_bar li {
+    float: left;
+    padding: 10px;
+}

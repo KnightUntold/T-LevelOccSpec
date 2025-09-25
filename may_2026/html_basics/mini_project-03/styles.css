@@ -3,7 +3,7 @@ header, footer {
 }
 
 header {
-    font-family: "Lucida Console", "monospace";
+    font-family: "Lucida Console", "monospace"; /*adds the font for the header */
 }
 
 .right_bar {
@@ -11,7 +11,7 @@ header {
 
 }
 
-nav ul {
+nav ul { /*basic nav css*/
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -24,25 +24,25 @@ body {
     background-color: #A0DCE9;
 }
 
-.slider {
+.slider { /*this is for the slider*/
     position: relative;
     width: 100%;
     margin: auto;
     overflow: hidden;
 }
 
-.slider img {
+.slider img { /*this sets the size and display of the image, its set to none so only one willl show at the sane time*/
     width: 100%;
     display:none;
 }
 
-img.displaySlide {
+img.displaySlide { /*this changes the display of the image being shown to be seen and adds an animation for the change*/
     display: block;
     animation-name: fade;
     animation-duration: 1.5s;
 }
 
-.slider button {
+.slider button { /*css for the buttons*/
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -53,14 +53,14 @@ img.displaySlide {
     border: none;
     cursor: pointer;
 }
-.previous {
+.previous { /*sets the position for left*/
     left: 0;
 }
-.next {
+.next { /*sets the position for right*/
     right: 0;
 }
 
-@keyframes fade {
+@keyframes fade { /* animation for slide change */
     from {opacity: .5}
     to {opacity: 1}
 }

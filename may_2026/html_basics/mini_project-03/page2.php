@@ -21,15 +21,7 @@
                 echo "<input type='text' name='password' id='password' placeholder='Enter Password Here'>"; //user input
                 echo "<input type='submit' name='submit' id='submit' value='Submit'>"; //user input
             echo "</form>";
-
-            require "footer.php"; //gets the footer
-        echo "</body>";
-    echo "</html>";
-
-
-
-
-
+            
     $password = $_POST['password']; //gets the user input as a variable to use to check different factors
 
 
@@ -38,15 +30,58 @@
     $lowercase = hasLowerCase($password);
     $number = hasNumber($password);
     $special = hasSpecialCharacter($password);
+    $has_password = hasPassword($password);/*sets the position for left*/
+    $special_first = hasSpecialCharacter($password[0]); //checks the requirements of certain characters
+    $special_last = hasSpecialCharacter($password[$length - 1]);
+    $number_first = hasNumber($password[0]);
 
-    if ($length < 8) {
-        echo "Password length must be at least 8 characters long.";
-    } else if ($uppercase != "") {
-        echo "Password length must be at least one uppercase letter.";
-    } else if ($lowercase != "") {
-        echo "Password length must be at least one lowercase letter.";
-    } else if ($number != "") {
-        echo "Password length must be at least one number.";
-    } else if ($special != "") {
-        echo "Password length must be at least one special character.";
+    //these need fixing, all should word expect for has password, doesnt validate out certain characters
+    if ($length < 8) { //if statement to go through each password condition
+        echo "Password length must be at least 8 characters long.<br>";
+    }  else {
+        echo "Password length is 8 characters long.<br>";
     }
+    if (!$uppercase) {
+        echo "Password must have at least one uppercase letter.<br>";
+    }  else {
+        echo "Password has at least one capital letter.<br>";
+    }
+    if (!$lowercase) {
+        echo "Password must have at least one lowercase letter.<br>";
+    }  else {
+        echo "Password has at least one lowercase letter.<br>";
+    }
+    if (!$number) {
+        echo "Password must have at least one number.<br>";
+    } else {
+        echo "Password has at least one number.<br>";
+    }
+    if (!$special) {
+        echo "Password must have at least one special character.<br>";
+    } else {
+        echo "Password has at least one special character.<br>";
+    }
+    /*if ($has_password) { //this one doesn't work
+        echo "Password cannot contain 'password'.<br>";
+    } else {
+        echo "Password does not contain 'password'.<br>";
+    }*/
+    if ($special_first) {
+        echo "Password cannot have a special character as the first character.<br>";
+    } else {
+        echo "Password does not have a special character as the first character.<br>";
+    }
+    if ($special_last) {
+        echo "Password cannot have a special character as last character.<br>";
+    } else {
+        echo "Password does not have a special character as last character.<br>";
+    }
+    if ($number_first) {
+        echo "Password cannot have a number as the first character.<br>";
+    } else {
+        echo "Password does not have a number as the first character.<br>";
+    }
+
+        require "footer.php"; //gets the footer
+    echo "</body>";
+echo "</html>";

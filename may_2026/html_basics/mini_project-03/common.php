@@ -28,3 +28,13 @@
             return false;
         }
     }
+
+    function hasPassword($string) { //this one needs fixing aaaa
+        if(str_contains($_SESSION['password'], "ERROR")) {
+            $string = "<div id='error'> USER MESSAGE: ". $_SESSION['password'] ."</div>";
+            return true;
+        } else {
+            $string = "<div id='success'> USER MESSAGE: ". $_SESSION['password'] ."</div>";
+            return false;
+        }
+    }
