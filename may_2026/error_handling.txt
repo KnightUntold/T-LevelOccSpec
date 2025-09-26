@@ -1,0 +1,64 @@
+Error handling
+
+L - Logs
+E - Error Message
+A - Area
+D - Doublecheck
+S – Scrutinise
+
+Logs – look for evidence
+
+php
+    • error logs (control panel)
+
+Javascript
+    • console logs
+
+Liquid
+    • on save/terminal
+
+Ajax
+    • Network tab
+
+Error Message – what does it say?
+    • Read the error message
+        ◦ line number
+        ◦ file name
+        ◦ what went wrong
+    • stack trace
+    • inspector tab
+
+    • put it into google (remove code details)
+    • go through it in text editor (make it more readable)
+Area – go to the area referred in the code
+    • spelling mistakes
+    • missing: ; {} () (punctuation)
+    • variables
+        ◦ Names
+        ◦ overwriting
+        ◦ scope
+google with parse
+tab your code
+be mindful of common variable names
+
+Doublecheck – Is your code doing what it should?
+    • Log it out
+        ◦ console.log()
+        ◦ echo
+        ◦ var_dump
+        ◦ echo “<pre>” print_r($array, true) “<pre>”; (this is for arrays)
+        ◦ {{}}
+        ◦ mail()
+    • location
+    • breakpoints
+	stops the code running at that point
+    • google (source tab)
+
+
+Scrutinise – go through the code in more detail
+    • comment out everything then uncomment chunk by chunk
+    • go back to the basics
+        ◦ is it the right file?
+        ◦ Has your file uploaded to the server correctly?
+        ◦ Revert to when it last worked and write it out again
+        ◦ cache

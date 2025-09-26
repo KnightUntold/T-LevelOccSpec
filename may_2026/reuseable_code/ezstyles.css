@@ -29,7 +29,8 @@
     text-align: center;
 }
 
-/*borderw=s, solid*/
+
+/*borders, solid*/
 
 .border_solid_black {
     border: 1px solid black;
