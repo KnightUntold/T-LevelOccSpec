@@ -64,7 +64,7 @@
     }
 
 
-    function user_msg(){
+    function user_message(){
         if(isset($_SESSION['usermessage'])){
             $message = "<p>" . $_SESSION['usermessage'] . "</p>";
             unset($_SESSION['usermessage']);
@@ -74,3 +74,74 @@
             return $message;
         }
     }
+
+    function username_ver($conn, $username){
+        try {
+            $sql = "SELECT username FROM user WHERE username = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindparam(1, $username);
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if($result) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            error_log("Database error in only_user:  " . $e->getMessage());
+            throw $e;
+        }
+
+    }
+
+    function reg_user($conn, $post){
+        try { //prepare and execute sql query
+            $sql = "INSERT INTO user (username, password, signupdate, dob, country) VALUES (?,?,?,?,?)";
+            $stmt = $conn->prepare($sql); //prepare to sql
+
+            $stmt->bindparam(1, $post['username']); //bind parameters for security
+            $hpwsd = password_hash($post['password'], PASSWORD_DEFAULT); //hash the password,
+            // using default encrytion because we don't have anything else built in.
+            // If it was a production system i would use better encryption like bcrypt or argon.
+            $stmt->bindparam(2, $hpwsd);
+            $stmt->bindparam(3, $post['signup']);
+            $stmt->bindparam(4, $post['dob']);
+            $stmt->bindparam(5, $post['country']);
+
+            $stmt->execute(); //run the query to insert
+            $conn = null; //closes the connection so it cant be abuse
+            return true; //registration successful
+            } catch (PDOException $e) {
+                //handle database errors
+                error_log("User Reg database error: " . $e->getMessage()); //log the error
+                throw new Exception("User Reg database error: " . $e->getMessage());
+            } catch (Exception $e) {
+                error_log("user Registration database error: " . $e->getMessage());
+                throw new Exception("User Registration database error: " . $e->getMessage());
+            }
+        }
+
+
+        function login($conn, $post){
+            try {
+                $sql = "SELECT 'user', 'user_id' FROM user WHERE username = ?"; //set up the sql statement
+                $stmt = $conn->prepare($sql); //prepares the statement
+                $stmt->bindparam(1, $post['username']); //binds parameters to execute
+                $stmt->bindparam(2, $post['userid']);
+                $stmt->execute(); //run the sql code
+                $result = $stmt->fetch(PDO::FETCH_ASSOC); //bring back results
+                $conn = null; //nulls off the connection so can't be abused
+
+                if($result) { //if there is a result returned
+                    return $result;
+                } else {
+                    $_SESSION['usermessage'] = "User not found";
+                    header("Location: login.php");
+                    exit; //stop further execution
+                }
+            } catch (PDOException $e) {
+                $_SESSION['usermessage'] = "User Login" . $e->getMessage();
+                header("Location: login.php");
+                exit; //stop further execution
+            }
+        }

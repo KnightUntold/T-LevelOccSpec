@@ -1,7 +1,14 @@
 <?php
-    session_start();
+    if (isset($_GET['message'])) {
+        session_start();
+        $message = false;
+    } else {
+        //decode the message for display
+        $message = htmlspecialchars(urldecode($_GET['message']));
+    }
 
     require_once "../../reuseable_code/dbconn.php";
+    require_once "../../reuseable_code/common.php";
 
     echo "<!DOCTYPE html>";
     echo "<html lang='en'>";
@@ -16,9 +23,10 @@
                 require "header.php";
             echo "</header>";
                 echo "<img src='photos/video_game_photo.webp' alt='video game footage'>";
+                echo "<br>";
+                echo user_message();
 
                 try {
-                    $conn = dbconnect_insert();
                     echo "success";
                 } catch (PDOException $e) {
                     echo $e->getMessage();
@@ -29,3 +37,10 @@
             echo "</footer>";
         echo "</body>";
     echo "</html>";
+
+
+    if (!$message) {
+        echo user_message();
+    } else {
+        echo $message;
+    }

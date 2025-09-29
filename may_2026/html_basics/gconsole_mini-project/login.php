@@ -1,4 +1,28 @@
 <?php
+    session_start();
+
+    require_once "../../reuseable_code/dbconn.php";
+    require_once "../../reuseable_code/common.php";
+
+    if (isset($_SESSION['user'])) {
+        $_SESSION['ERROR'] = "ERROR: You are already logged in!";
+        header('Location: index.php');
+        exit; //stop further execution
+    } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $usr = login(dbconnect_insert(), $_POST);
+
+        if ($usr && password_verify($_POST['password'], $usr['password'])) {
+            $_SESSION['user'] = true;
+            $_SESSION['usermessage'] = "SUCCESS: User Successfully Logged In!";
+            $_SESSION['userid'] = $usr['user_id'];
+            header('Location: index.php');
+            exit;
+        } else {
+            $_SESSION['usermessage'] = "ERROR: Wrong Username or Password!";
+            header('Location: index.php');
+            exit; //stop further execution
+        }
+    }
 
     echo "<!DOCTYPE html>";
 

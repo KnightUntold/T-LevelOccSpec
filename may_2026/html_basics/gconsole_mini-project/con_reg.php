@@ -6,7 +6,7 @@
 
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
         try {
-         new_console(dbconnect_insert(), $_POST); //callnig a subroutine and passing another subroutine through it because if the connection is successful, it sends $conn
+         new_console(dbconnect_insert(), $_POST); //calling a subroutine and passing another subroutine through it because if the connection is successful, it sends $conn
             $_SESSION['usermessage'] = "SUCCESS: Console created!";
         } catch (PDOException $e) {
             $_SESSION['usermessage'] = $e->getMessage();
