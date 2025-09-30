@@ -75,3 +75,89 @@ Look at the laws and legislation that the businesses would have to work under
 Look at other laws/ legisation that will impact your system you will develop
 
 What is the impact on your project? what will you use to adjust / migrate these impacts?
+
+GDPR
+WGC
+
+passwords shouldn't be stored in plain text
+
+
+ALTERNATIVE SYSTEMS
+
+Look at/research other systems that are available for the same thing (sales platforms etc)
+
+If you are struggling look at excel as an option
+
+for each system: (3-5)
+    what does the system do well (that solves their problem)
+    what does the system fail to do for them
+    what things will you take forward to your design and why
+
+
+RISKS
+
+Start with security risks: What risks exist? How can you defend or prevent them being an issue.
+What sort of risks might also come up? This could impede you completing the project
+you need to make sure you discuss how you will mitigate these risks
+
+change of law during development
+
+
+DECOMPOSITION
+
+"break down" the problem as you see it right now, into a diagram
+This will be a sort of diagram of the structure of the website you are going to build the
+feature you are going to have on each page
+
+USER ACCEPTANCE CRITERIA
+
+list of things that the user will need to see/ experience/ feel etc to accept the system.
+This could be things like:
+    clear and obvious navigation bar
+    fast loading times for each of the pages
+    clear instructions on each page for booking
+
+these should be grouped by each of the user groups you have identified.
+
+
+FUNCTIONAL AND NON-FUNCTIONAL REQUIREMENTS
+
+functional requirements are things the system should do (focus on business needs):
+
+    allow users to register
+    once logged in, direct users straight to their profile page
+    Allow booking of events in advance
+
+Non-functional requirements are how the system should do things:
+
+    store passwords using sha256
+    Each page should load in 2-5 seconds
+
+
+KEY PERFORMANCE INDICATORS (KPI)
+
+Things that will help to indicate the success of the project from a business perspective
+should be categorised where possible
+
+examples should include:
+    "improved trust pilot reviews"
+    "Visitor satisfaction rate"
+    "Number of repear visitors"
+    "page load time"
+    "traffic by source increase in all sources"
+
+
+DECRIPTION OF PROPOSED SOLUTION
+
+give an overview of what your solution will be.
+
+conclusion, say what you are going to build
+
+
+TIPS
+
+justify EVERYTHING, the more you tell the better, so what method
+
+Keep a thorough and accurate list of websites you visited with TIME AND DATE
+
+other then the first and last couple of headings the rest do not need to be in the order written.
