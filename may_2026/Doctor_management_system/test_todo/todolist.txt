@@ -1,0 +1,175 @@
+To do list
+
+patient name
+appointment date
+appointment time
+doctor
+
+when submitted should save in appointment table in a database
+
+doctors should be able to see list of appointments and its details from appointment table
+
+
+get user submits in var names then insert it all in 1 go
+
+INSERT INTO patient_data
+VALUES (var1, var2, var3, var4, var5, var6, var7, var8);
+
+
+
+EXTENSION
+
+user selects a time slot which lessens the amount of doctors to the ones available at that time.
+
+somehow add the appointment date and time onto the success page from thingy.php
+
+
+
+$conflicts_query = "SELECT COUNT(*) as conflicts
+                    FROM patient_data
+                    WHERE app_date = (?) AND app_time = (?) AND doctor = (?)";
+
+pull the conflicts out with prepared statement
+if ($conflicts > 0) {
+    echo "<h3>Sorry! This appointment is taken, please pick another date</h3>";
+}
+
+$conflict_stmt = mysqli_stmt_init($mysqli);
+            if (!mysqli_stmt_prepare($conflict_stmt, $conflicts_query)) {
+                echo "SQL statement failed";
+            } else {
+                mysqli_stmt_bind_param($conflict_stmt, 'sss',
+                                                $appdate,
+                                                $apptime,
+                                                $doctor);
+                $conflicts = mysqli_stmt_execute($conflict_stmt);
+            }
+
+
+
+$conflicts_query = "SELECT COUNT(*) as conflicts
+                    FROM patient_data
+                    WHERE app_date = (?) AND app_time = (?) AND doctor = (?)";
+
+        $conflict_stmt = mysqli_stmt_init($mysqli);
+            if (!mysqli_stmt_prepare($conflict_stmt, $conflicts_query)) {
+                echo "SQL statement failed";
+            } else {
+                mysqli_stmt_bind_param($conflict_stmt, 'sss',
+                                                $appdate,
+                                                $apptime,
+                                                $doctor);
+                $conflicts = mysqli_stmt_execute($conflict_stmt);
+                echo "<pre>" . print_r($conflicts, false) . "</pre>";
+            }
+
+} elseif ($conflicts > 0) {
+            echo "<h3>Sorry! This appointment is taken, please pick another date</h3>";
+}
+
+
+CONFLICTS NEEDS TO BE IN THE AJAX AAAAAAAAAAA
+
+
+
+
+on click -> switch case break default through each day id,
+disabling doctors who arent working those days
+
+how to get the days off the calendar input????? it outputs the just the date eg 23/05/2025 not the days of the week? uhhhhhhhhh
+
+put this in a function and shove it under the form on the thing?
+
+day = onclick ... day of week is here somehow
+switch (day) {
+    case (day = 1):
+        mondoctors = <?php mysqli_query($mysqli, "SELECT * FROM daysfordoctors WHERE days_id = 1 "); ?>
+
+        step here idk
+
+        "SELECT Name FROM doctors WHERE ID = mondoctors"
+
+
+
+}
+
+when a user selects a date it needs to be converted to its day id and then used to select what doctors are working on those days.
+if i am right, they should already be organised by their speciality. but they arent showing up because they need their day id to show up, it needs the functionality for that when you enter s date the lsit gets lessened to the doctors available.
+
+AND days_id = ?; added to the sql statement. the day it defined by what date the user enters on teh calendar. the date type returns data like 0000-00-00 year-month-day need to take that data and find out what the day of the week it is, turn the days of the weeks into their mysql ids to then use to find the doctors in the db.
+
+selecting a set of data from one table, cross comparing it with another table and outputting the data to a user
+
+selecting data from one table and cross comparing with another table to filter results
+
+got date converted basics but need to get the user inputted date into the date variable. when the user enters it. ajax?? it needs to update without refreshing the page.
+
+filter daysfordoctors for correct data
+get doctor id from doctors table
+get the name from the ids
+
+SELECT daysfordoctors.doctors_id, doctors.Name, daysfordoctors.days_id
+FROM daysfordoctors
+INNER JOIN doctors
+ON daysfordoctors.doctors_id=doctors.ID;
+
+(if the for each loop is too hard, put it in a fumction lol)
+
+https://phpdelusions.net/mysqli_examples/prepared_select#prepare
+
+$example = 'example';
+$stmt = $mysqli->prepare("SELECT * FROM `tabl` WHERE `example`=?");
+$stmt->bind_param("s", $example);
+$stmt->execute();
+$exampleArray = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+DONE
+
+stop duplicate record on refresh DONE
+
+make it so doctor appointments can only be booked when the doctors are available DONE
+
+past validation DONE
+
+phone number thing fixed, cannot submit a null phonenumber (or any value) into the database now. DONE
+
+sql queries to prepared statements (ones with ?). DONE.
+
+make sure users cant put letters where letters dont go lol and stuff how idk only know how in python DONE
+
+seperate doctors table in database and group thingys. DONE
+
+pull doctor from database into form. DONE
+
+filters to only show available doctors for date (javascript listening for the dates being entered to see what docotrs are available) DONE
+
+
+1 ] 753
+
+2 ]124
+
+3 ] 562
+
+4 ] 637
+
+5 ] 543
+
+6 ] 124
+
+7 ] 457
+
+8 ] 316
+
+9 ] 751
+
+10 ] 342
+
+11 ] 136
+
+ 1 ] ||||| 5
+ 2 ] |||| 9
+ 3 ] |||||| 15
+ 4 ] ||||| 20
+ 5 ] ||||| 25
+ 6 ] |||| 29
+ 7 ] |||| 33
