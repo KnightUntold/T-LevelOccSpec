@@ -1,0 +1,85 @@
+DPDD Year 13 Homework Project
+
+Preface:
+
+Keep in mind that this is a long project, there is no expectation you will rush to build this project. You will be expected to complete sections at time scales relevant to having covered things in school.
+
+I will not be chasing and hassling you to have completed this project, however, you all have a vested interest in doing it, to the best of your ability as this will be significantly bigger and more complex than what you are likely to do in your final exam. So this will be excellent practice in a set theme (just like the exam) and will make a good linked in post for an employer project.
+
+Background information:
+
+Across the country, there are students in every school who need medication either on a schedule or available to them in a moment of need (asthma, migraine and so on).
+
+Schools have to hold this medicine in school on the students behalf and make it available to them, but at the same time, they also have to “manage” these medicines in terms of dosages left, used by dates and if they are still relevant to be kept / held.
+
+Typically there is 1 to 3 people in charge of “administering” this system and these systems are often highly inefficient and error riddled paper based systems or clunky spreadsheets which are poorly maintained.
+
+Scenario Information:
+
+Student pages:
+
+Per student, each medication needs to be tracked, uniquely, with its number of doses, date it was given to school and the expiry date of the medication.
+
+When dosages are getting low, this should be highlighted to the staff running the system so that they can contact the family to request more. The same should happen as a medication gets close its expiry date.
+
+The system should make it easy to add a single student to the system but also add large numbers of students at the same time. No other information other than names and year group need be stored in the system.
+
+The system should allow individual students year group to be changed as well as all students moved year groups at the same time. This is to aid with the movement of school years. Students moving to year 12 and students moving to year 14 should prompt questions of if they should be removed from the system.
+
+Each student “page” should show the students medications and colour code the row to reflect the status of each medicine.
+
+A student page should have the ability to remove the student, and their associated medications, from the system, but it should not be a one click system, it should warn / confirm before doing this.
+
+
+
+Medicines:
+
+For each student the system should allow adding medication to the student.
+
+It should take in the Brand (e.g. Tesco), type of medicine (e.g. paracetamol), Current number of doses, max doses, a number to be used as “low doses” and the expiry date.
+
+When adding a medicine the system should offer drop down boxes of brands and medication types, if the brand or medicine doesn’t currently exist in the system, then they should be taken to a “add Brand” or “add medicine” screen to add it to the system. So the drop down boxes should “learn” over time, reducing the risk of entry error into the system.
+
+Adding a medicine to a student should be done from a student page and no where else.
+
+Medication should be removable from a student, but should warn and confirm before removing.
+
+
+
+Staff Roles:
+
+When the system is first initialised, as “administrator” account should be created.  This top administrator account has the power to do anything, but should only be used to: Create   “admin” accounts on the system (used for all other tasks), perform back up procedures and allow overview of the students / medicines (see below)
+
+Admin accounts should then be used to perform all other actions in the system, such as add / remove students, medicines etc.
+
+An additional role of “staff” should be created which has only the power to read information in the system but not modify. These will be the first aiders in school.
+
+Dashboard:
+
+When the system is opened by an administrator or admin, a dash board of key information should be displayed.
+
+This should be a series of colour coded columns of information, with buttons for key actions on each block of info.
+
+The first column should be a dark blue column of medicine which is past expiry date (and not replaced) or below the “low dosage” number.
+
+The next column should be a red column for things which are a week or less from their expiry date or at their “low dosage” number (or less, but not 0).
+
+The next column should be a dark amber which is medicines within 1 month of its expiry date or very close to the “low dosage” number.
+
+The next column should be a lighter amber colour which is medicines between 1 and 3 months from expiry or less than 50% of dosages left (if this would put it into another column, then that column takes precedence)
+
+Overview
+
+The admin staff should be able to see an overview showing all medicines and which students have them. An alternative should be included which should show a list of students and the medicines linked to each of them. A “would like” feature of this overview would be filters applied to the overview screen to allow them to filter for different things e.g. brands, medicine type, year group, medicines close to low dosage and so on.
+
+Backup system
+
+The school would like a way to back up their system, and if following a mistake, or other unknown event, can easily recover the system to the last back up date. However this is something which is a “would like” not a “Must have”. It should be easy to take a backup, from the main system (not accessing the database). And when a new system is set up, when you have created the “Administrator” there should be an option to import a backup or to create a new school set up (which will be the typical use case).
+
+
+
+General system
+
+When the system is set up, a logo image should be asked for and colour codes (HTML ones) to allow the system to be partially colour coded to the school it is going to be used in.
+
+There should be a search facility which allows searching for a student or brand or medicine type. The overview screen of students should be the main way of finding people after this.  
