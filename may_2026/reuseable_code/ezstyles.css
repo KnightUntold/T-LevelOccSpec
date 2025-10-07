@@ -29,6 +29,17 @@
     text-align: center;
 }
 
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.width10per {
+    width: 10%;
+   }
 
 /*borders, solid*/
 
@@ -56,7 +67,16 @@
 .border_solid_gray {
     border: 1px solid gray;
 }
-
+.button {
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
 
 
@@ -90,6 +110,14 @@
     background-color: powderblue;
 }
 
+.back_005eb8 {
+    background-color: #005eb8;
+}
+
+.back_e8edee {
+    background-color: #e8edee;
+}
+
 /* colour */
 
 .white {
@@ -98,3 +126,7 @@
 .black {
     color: black;
 }
+
+
+
+

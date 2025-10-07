@@ -1,0 +1,78 @@
+DESIGN DOCUMENTATION
+
+TIPS
+
+can someone else in your group build your solution from your design?
+
+link design to non-functional and functional requirements (use the numbers) JUSTIFY IT
+
+WHAT IS A DESIGN PACK?
+
+design how the whole system will look/ work/ store data etc.
+WITH ALL of your thoughts/ decisions recorded and justified
+
+your designs need to be detailed enough
+
+ORGANISATIONS OF YOUR DESIGNS
+
+There is no set order to a design section
+
+Order them how you feel works for you
+
+OVERVIEW / DECOMPOSITION DIAGRAM
+
+Have a large flowchart style diagram which shows the overall structure of your site and link to database and how infomation will flow.
+explain the diagram and what it shows
+
+SHOULD BE THE FIRST THING IN THE DESIGN SECTION
+
+ER DIAGRAM FOR YOUR DATABASE
+
+build an entity relationship diagram (db diagram) that SHOWS THE CONNECTIONS (1 to many etc)
+
+justify/ explain how the userid will be "flow" between pages, which is initially collected from database when a user logs in.
+
+DATA FLOW DIAGRAM
+
+show an overview, with your database shown. THIS IS NEEDED BUT LATER
+
+TABLE STRUCTURE (DATA DICTIONARY)
+
+give a list of fields (columns) you have in each table, including primary and foreign keys.
+
+list the datatype for each field, give an example and justify why you need it.
+
+DATA STRUCTURES / VARIABLE LIST
+
+build a table with all the variables you will beed, probably the best done after the rest of the design, or as you are designing
+
+COLOUR SCHEME
+
+show colours you intend to use in your website
+make use of a color picker to choose complimenting colours into a palette
+justify how these colours link to each other nd to the theme of the scenario
+explain where you are likely to use each of them e.g. font colour, background colour
+
+INTERFACE DESIGNS
+
+make a mockup to see what it would look like. Royalty free images are a good shout or temp images
+Use your styles of fonts/ headings that you will use
+make sure theres commentary for the design
+
+ALGORITHM DESIGNS
+
+Use pseudocode not flowcharts for more marks
+
+add a flowchart but pseudocode is more important
+
+you dont need to design anything static
+
+only dynamic, important stuff.
+
+show why stuff is happening (comment it you twat)
+
+TEST STRATEGY
+
+develop a testing table of what you intend to test and how you will test it, including data you will use as part og the test.
+
+Justify these tests and the data as to why they are good/ useful.
