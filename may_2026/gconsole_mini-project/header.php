@@ -5,9 +5,14 @@
             echo "<div class='nav_bar'>";
                 echo "<ul >"; #declares unordered list
                 echo "<li><a class='white' href='index.php'>Home</a></li>";
-                echo "<li><a class='white' href=con_reg.php>Register a console</a></li>";
-                echo "<li><a class='white' href='register.php'>Sign Up</a></li>";
-                echo "<li><a class='white' href='login.php'>Login</a></li>";
+
+                if (!isset($_SESSION['user'])){
+                    echo "<li><a class='white' href='login.php'>Login</a></li>";
+                    echo "<li><a class='white' href='register.php'>Sign Up</a></li>";
+                } else {
+                    echo "<li><a class='white' href=con_reg.php>Register a console</a></li>";
+                    echo "<li><a class='white' href=logout.php>Log out</a></li>";
+                }
                 echo "</ul>";
             echo "</div>";
         echo "</nav>";

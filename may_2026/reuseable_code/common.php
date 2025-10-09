@@ -124,10 +124,9 @@
 
         function login($conn, $post){
             try {
-                $sql = "SELECT 'user', 'user_id' FROM user WHERE username = ?"; //set up the sql statement
+                $sql = "SELECT user_id, password FROM user WHERE username = ?"; //set up the sql statement
                 $stmt = $conn->prepare($sql); //prepares the statement
                 $stmt->bindparam(1, $post['username']); //binds parameters to execute
-                $stmt->bindparam(2, $post['userid']);
                 $stmt->execute(); //run the sql code
                 $result = $stmt->fetch(PDO::FETCH_ASSOC); //bring back results
                 $conn = null; //nulls off the connection so can't be abused
@@ -144,4 +143,18 @@
                 header("Location: login.php");
                 exit; //stop further execution
             }
+        }
+
+        function audtitor($conn, $userid, $code, $long){ //on doing any action, the auditor logs it
+            $sql = "INSERT INTO audit (date, userid, code, long) VALUES (?,?,?,?)"; //prepared statement
+            $stmt = $conn->prepare($sql); //prepare to sql
+            $date = date("Y-m-d"); //exact structure that a mysql date field accepts
+            $stmt->bindparam(1, $date); //bind params for security
+            $stmt->bindparam(2, $userid);
+            $stmt->bindparam(3, $code);
+            $stmt->bindparam(4, $long);
+
+            $stmt->execute(); //runs the query to insert
+            $conn = null; //closes the connection so it can't be abused
+            return true; //registration successful
         }

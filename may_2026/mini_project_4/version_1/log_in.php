@@ -14,8 +14,23 @@
             require "header.php";
 
             echo "<h1 class='center'>Log In</h1>";
-            echo "<form action='' method='post'>";
-                echo "<label for='fname'>First name:</label>";
+            echo "<form action='' method='post' class='center'>";
+                echo "<label for='fname'>First name:</label><br>";
+                echo "<input type='text' name='fname' id='fname'>";
+
+                echo "<br><label for='lname'>Last name:</label><br>";
+                echo "<input type='text' name='lname' id='lname'>";
+
+                echo "<br><label for='email'>Email:</label><br>";
+                echo "<input type='text' name='email' id='email'>";
+
+                echo "<br><label for='phone'>Phone Number:</label><br>";
+                echo "<input type='tel' name='phone' id='phone'>";
+
+                echo "<br><label for='password'>Password:</label><br>";
+                echo "<input type='password' name='password' id='password'>";
+
+                echo "<br><input type='submit' name='submit' id='submit' value='Log In'>";
             echo "</form>";
 
             require "footer.php";

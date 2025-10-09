@@ -1,8 +1,8 @@
 <?php
     session_start();
 
-    require_once "../../reuseable_code/dbconn.php";
-    require_once "../../reuseable_code/common.php";
+    require_once "../reuseable_code/dbconn.php";
+    require_once "../reuseable_code/common.php";
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 

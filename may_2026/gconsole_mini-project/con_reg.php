@@ -1,8 +1,14 @@
 <?php
     session_start();
 
-    require_once "../../reuseable_code/dbconn.php";
-    require_once "../../reuseable_code/common.php";
+    require_once "../reuseable_code/dbconn.php"; //calls in the connection to the database and common.php where a lot of subroutines are
+    require_once "../reuseable_code/common.php"; //this improves the reuseability of code and lessens processing time
+
+    if (!isset($_SESSION['user'])){ //this redirects you to the login page if you aren't logged in so that a unlogged in user can't input into the database
+        $_SESSION['usermessage'] = "ERROR: You need to be logged in!"; //this improves the security of the system because someone
+        header("Location: login.php"); //trying to break into the system can't input anything into the database without a login
+        exit;
+    }
 
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
         try {
@@ -27,7 +33,7 @@
             require "header.php";
             echo "</header>";
             echo "<br>";
-            echo user_msg();
+            echo user_message();
             echo "<br>";
     echo "<form action='' method='post' class='center'>";
         echo "<label for='manufacturer'>Manufacturer</label><br>";

@@ -7,7 +7,7 @@
 
         $dbpassword = "password1G"; //password for db account
 
-        $dbname = "gconsole"; //db name to connect to
+        $dbname = "gconsole_2"; //db name to connect to
 
         //these 4 things above are super insecure, should not be stored here, especially in plain text.
         //only stored here because of the system and instance being safe enough to do so.
@@ -31,7 +31,7 @@
 
         $dbpassword = "password1G"; //password for db account
 
-        $dbname = "gconsole"; //db name to connect to
+        $dbname = "gconsole_2"; //db name to connect to
 
         //these 4 things above are super insecure, should not be stored here, especially in plain text.
         //only stored here because of the system and instance being safe enough to do so.

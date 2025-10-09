@@ -1,20 +1,21 @@
 <?php
     session_start();
 
-    require_once "../../reuseable_code/dbconn.php";
-    require_once "../../reuseable_code/common.php";
+    require_once "../reuseable_code/dbconn.php";
+    require_once "../reuseable_code/common.php";
 
     if (isset($_SESSION['user'])) {
         $_SESSION['ERROR'] = "ERROR: You are already logged in!";
         header('Location: index.php');
         exit; //stop further execution
     } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $usr = login(dbconnect_insert(), $_POST);
+        $usr = login(dbconnect_select(), $_POST);
 
-        if ($usr && password_verify($_POST['password'], $usr['password'])) {
+        if ($usr && hasPassword($_POST['password'], $usr['password'])) {
             $_SESSION['user'] = true;
             $_SESSION['usermessage'] = "SUCCESS: User Successfully Logged In!";
             $_SESSION['userid'] = $usr['user_id'];
+            audtitor(dbconnect_insert(), $_SESSION['userid'], "log", "User has successfully logged in");
             header('Location: index.php');
             exit;
         } else {
@@ -37,7 +38,10 @@
             echo "<header>";
                 require "header.php";
             echo "</header>";
-            echo "<form action='login.php' method='post' class='center'>";
+            echo "<br>";
+            echo user_message();
+            echo "<br>";
+            echo "<form action='' method='post' class='center'>";
                 echo "<br><label for='username'>Username</label><br>";
                 echo "<input type='text' name='username' placeholder='Username'><br>";
                 echo "<label for='password'>Password</label><br>";

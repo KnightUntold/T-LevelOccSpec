@@ -1,5 +1,5 @@
 <?php
-    if (isset($_GET['message'])) {
+    if (!isset($_GET['message'])) {
         session_start();
         $message = false;
     } else {
@@ -7,8 +7,8 @@
         $message = htmlspecialchars(urldecode($_GET['message']));
     }
 
-    require_once "../../reuseable_code/dbconn.php";
-    require_once "../../reuseable_code/common.php";
+    require_once "../reuseable_code/dbconn.php";
+    require_once "../reuseable_code/common.php";
 
     echo "<!DOCTYPE html>";
     echo "<html lang='en'>";
