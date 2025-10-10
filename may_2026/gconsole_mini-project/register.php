@@ -6,9 +6,14 @@
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-        if(!username_ver(dbconnect_select(), $_POST['username'])) {
-            if (reg_user(dbconnect_insert(), $_POST)) {
+        if(!username_ver(dbconnect(), $_POST['username'])) {
+            if (reg_user(dbconnect(), $_POST)) {
+                audtitor(dbconnect(),getnewuserid(dbconnect(), $_POST['username']), "reg","New user registered");
                 $_SESSION['usermessage'] = "USER CREATED SUCCESSFULLY";
+                header('Location: login.php');
+                exit;
+
+
             } else {
                 $_SESSION['usermessage'] = "ERROR: USER REGISTRATION FAILED";
             }

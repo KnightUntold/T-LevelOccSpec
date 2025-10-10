@@ -9,13 +9,13 @@
         header('Location: index.php');
         exit; //stop further execution
     } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $usr = login(dbconnect_select(), $_POST);
+        $usr = login(dbconnect(), $_POST);
 
-        if ($usr && hasPassword($_POST['password'], $usr['password'])) {
+        if ($usr && hasPassword($_POST['password'], $usr['password'])) { //this condition isnt being met which means no one can log in
             $_SESSION['user'] = true;
             $_SESSION['usermessage'] = "SUCCESS: User Successfully Logged In!";
             $_SESSION['userid'] = $usr['user_id'];
-            audtitor(dbconnect_insert(), $_SESSION['userid'], "log", "User has successfully logged in");
+            audtitor(dbconnect(), $_SESSION['userid'], "log", "User has successfully logged in");
             header('Location: index.php');
             exit;
         } else {

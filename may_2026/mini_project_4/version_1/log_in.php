@@ -1,4 +1,32 @@
 <?php
+
+    session_start();
+
+    require_once "assets/dbconn.php";
+    require_once "assets/common.php";
+
+    if (isset($_SESSION['user'])) {
+        $_SESSION['ERROR'] = "ERROR: You are already logged in!";
+        header('Location: index.php');
+        exit; //stop further execution
+    } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $usr = login(dbconnect_select(), $_POST);
+
+        if ($usr && hasPassword($_POST['password'], $usr['password'])) { //this condition isnt being met which means no one can log in
+            $_SESSION['user'] = true;
+            $_SESSION['usermessage'] = "SUCCESS: User Successfully Logged In!";
+            $_SESSION['userid'] = $usr['user_id'];
+           // audtitor(dbconnect(), $_SESSION['userid'], "log", "User has successfully logged in");
+            header('Location: index.php');
+            exit;
+        } else {
+            $_SESSION['usermessage'] = "ERROR: Wrong Username or Password!";
+            header('Location: index.php');
+            exit; //stop further execution
+        }
+    }
+
+
     echo "<!DOCTYPE html>";
 
     echo "<html lang='en'>";
@@ -12,6 +40,10 @@
         echo "<body>";
 
             require "header.php";
+
+            echo "<br>";
+            echo user_message();
+            echo "<br>";
 
             echo "<h1 class='center'>Log In</h1>";
             echo "<form action='' method='post' class='center'>";

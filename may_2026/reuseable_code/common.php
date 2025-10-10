@@ -146,7 +146,7 @@
         }
 
         function audtitor($conn, $userid, $code, $long){ //on doing any action, the auditor logs it
-            $sql = "INSERT INTO audit (date, userid, code, long) VALUES (?,?,?,?)"; //prepared statement
+            $sql = "INSERT INTO audit_db (date, userid, code, longdesc) VALUES (?,?,?,?)"; //prepared statement
             $stmt = $conn->prepare($sql); //prepare to sql
             $date = date("Y-m-d"); //exact structure that a mysql date field accepts
             $stmt->bindparam(1, $date); //bind params for security
@@ -157,4 +157,15 @@
             $stmt->execute(); //runs the query to insert
             $conn = null; //closes the connection so it can't be abused
             return true; //registration successful
+        }
+
+
+        function getnewuserid($conn, $email){ //upon registering, this retrieves the userid from
+            $sql = "SELECT user_id FROM user WHERE username = ?";
+            $stmt = $conn->prepare($sql); //prepares
+            $stmt->bindparam(1, $email);
+            $stmt->execute(); //run sql code
+            $result = $stmt->fetch(PDO::FETCH_ASSOC); //bring back results
+            $conn = null; //closes the connection to prevent abuse
+            return $result['user_id'];
         }

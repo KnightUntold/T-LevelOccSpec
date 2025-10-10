@@ -1,4 +1,29 @@
 <?php
+    session_start();
+
+    require_once "assets/dbconn.php";
+    require_once "assets/common.php";
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+        if(!email_ver(dbconnect_select(), $_POST['email'])) {
+            if (reg_user(dbconnect_insert(), $_POST)) {
+               // audtitor(dbconnect(),getnewuserid(dbconnect(), $_POST['username']), "reg","New user registered");
+                $_SESSION['usermessage'] = "USER CREATED SUCCESSFULLY";
+                header('Location: log_in.php');
+                exit;
+
+
+            } else {
+                $_SESSION['usermessage'] = "ERROR: USER REGISTRATION FAILED";
+            }
+        } else {
+            $_SESSION['usermessage'] = "ERROR: USERNAME NOT AVAILABLE";
+        }
+    }
+
+
+
     echo "<!DOCTYPE html>";
 
     echo "<html lang='en'>";
@@ -38,6 +63,10 @@
 
                 echo "<br><input type='submit' name='submit' id='submit' value='Sign Up'>";
             echo "</form>";
+
+            echo "<br>";
+            echo user_message();
+            echo "<br>";
 
             require "footer.php";
 
