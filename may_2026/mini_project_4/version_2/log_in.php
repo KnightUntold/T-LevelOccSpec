@@ -16,7 +16,7 @@
             $_SESSION['user'] = true;
             $_SESSION['usermessage'] = "SUCCESS: User Successfully Logged In!";
             $_SESSION['patid'] = $usr['patient_id'];
-            audtitor(dbconnect_insert(), $_SESSION['userid'], "log", "User has successfully logged in");
+            audtitor(dbconnect_insert(), $_SESSION['patid'], "log", "User has successfully logged in");
             header('Location: login_index.php');
             exit;
         } else {

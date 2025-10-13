@@ -20,7 +20,7 @@
             echo "<meta charset='UTF-8'>";
             echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
             echo "<link rel='stylesheet' type='text/css' href='../../reuseable_code/ezstyles.css'>";
-            echo "<title>Appointment Booked Successfully</title>";
+            echo "<title>Home</title>";
         echo "</head>";
 
         echo "<body>";
