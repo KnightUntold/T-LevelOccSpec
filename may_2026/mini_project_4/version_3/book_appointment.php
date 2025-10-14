@@ -37,6 +37,8 @@
 
             echo "<form action='' method='post' class='center'>";
 
+                $staff = staff_getter(dbconnect_select());
+
                 echo "<br><label for='app_kind'>Kind of Appointment:</label><br>";
                 echo "<select name='app_kind' id='app_kind' required='true'>";
                 echo "<option value='' disabled selected>Please Enter the kind of appointment you need:</option>";
@@ -69,6 +71,19 @@ echo "<br><label for='app_reason'>Reason for Appointment:</label><br>";
                 echo " <textarea cols='46' rows='8' name='accom' id='accom' placeholder = 'Please let us know about any accomidations you may need:' maxlength= '500'></textarea>";
 
                 echo "<br><input type='submit' name='submit' id='submit' value='Book Appointment'>";
+
+                echo "<select name='staff'>";
+
+                foreach ($staff as $staf) {
+                    if ($staf['role'] = "doc"){
+                        $role = "Doctor";
+                    } else if ($staf['role'] = "nur"){
+                        $role = "Nurse";
+                    }
+                    echo "<option value =" .$staf['staffid']. ">" .$role. " ". $staf['sname']. " ". $staf['fname']. "Room".$staf['room']. "</option>";
+
+                    echo "</select>"
+                }
 
             echo "</form>";
 

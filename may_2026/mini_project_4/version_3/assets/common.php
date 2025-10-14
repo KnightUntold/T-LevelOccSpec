@@ -153,3 +153,19 @@ function getnewuserid($conn, $email){ //upon registering, this retrieves the use
     return $result['patient_id'];
 }
 
+function staff_getter($conn){
+    //function to get all staff suitable for an appointment
+
+    $sql = "SELECT staff_id, staff_type, fname, sname, room FROM staff_users WHERE role !=? ORDER BY role DESC";
+    //get all staff from database where role does NOT equal to "adm" - this is an admin role, unbookable
+    $stmt = $conn->prepare($sql);
+    $exclude_role = "adm";
+
+    $stmt->bindparam(1, $exclude_role);
+
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC); //adding all fetches everything person that matches the requirements needed
+    $conn = null;
+    return $result;
+}
+
