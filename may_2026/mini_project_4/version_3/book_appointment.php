@@ -82,7 +82,7 @@ echo "<br><label for='app_reason'>Reason for Appointment:</label><br>";
                     }
                     echo "<option value =" .$staf['staffid']. ">" .$role. " ". $staf['sname']. " ". $staf['fname']. "Room".$staf['room']. "</option>";
 
-                    echo "</select>"
+                    echo "</select>";
                 }
 
             echo "</form>";
