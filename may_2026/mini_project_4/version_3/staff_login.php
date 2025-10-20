@@ -48,13 +48,13 @@ echo "<br>";
 echo "<h1 class='center'>Staff Log In</h1>";
 echo "<form action='' method='post' class='center'>";
 echo "<label for='user'>Username:</label><br>";
-echo "<input type='text' name='user' id='user'>";
+echo "<input type='text' name='user' id='user' required>";
 
 echo "<br><label for='email'>Email:</label><br>";
-echo "<input type='email' name='email' id='email'>";
+echo "<input type='email' name='email' id='email' required>";
 
 echo "<br><label for='password'>Password:</label><br>";
-echo "<input type='password' name='password' id='password'>";
+echo "<input type='password' name='password' id='password' required>";
 
 echo "<br><input type='submit' name='submit' id='submit' value='Log In'>";
 echo "</form>";
