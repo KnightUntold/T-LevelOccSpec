@@ -3,7 +3,7 @@
 session_start();
 
 require_once "assets/dbconn.php";
-require_once "assets/common.php";
+require_once "assets/staff_common.php";
 
 if (isset($_SESSION['user'])) {
     $_SESSION['ERROR'] = "ERROR: You are already logged in!";
@@ -49,6 +49,9 @@ echo "<h1 class='center'>Staff Log In</h1>";
 echo "<form action='' method='post' class='center'>";
 echo "<label for='user'>Username:</label><br>";
 echo "<input type='text' name='user' id='user'>";
+
+echo "<br><label for='email'>Email:</label><br>";
+echo "<input type='email' name='email' id='email'>";
 
 echo "<br><label for='password'>Password:</label><br>";
 echo "<input type='password' name='password' id='password'>";

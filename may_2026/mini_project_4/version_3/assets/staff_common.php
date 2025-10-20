@@ -31,19 +31,20 @@
 
     function reg_staffuser($conn, $post){
         try { //prepare and execute sql query
-            $sql = "INSERT INTO staff_users (email, username, password, staff_type, fname, sname, room, sign_up_date) VALUES (?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO staff_users (email, username, password, staff_type, fname, sname, room, sign_up_date) VALUES (?,?,?,?,?,?,?,?)";
             $stmt = $conn->prepare($sql); //prepare to sql
             $signupdate = date("Y-m-d");
             $hpwsd = password_hash($post['password'], PASSWORD_DEFAULT); //hash the password,
             // using default encrytion because we don't have anything else built in.
             // If it was a production system i would use better encryption like bcrypt or argon.
-            $stmt->bindparam(1, $post['fname']); //bind parameters for security
-            $stmt->bindparam(2, $post['lname']);
-            $stmt->bindparam(3, $post['email']);
-            $stmt->bindparam(4, $post['phone']);
-            $stmt->bindparam(5, $post['dob']);
-            $stmt->bindparam(6, $hpwsd);
-            $stmt->bindparam(7, $signupdate);
+            $stmt->bindparam(1, $post['email']); //bind parameters for security
+            $stmt->bindparam(2, $post['username']);
+            $stmt->bindparam(3, $hpwsd);
+            $stmt->bindparam(4, $post['staff']);
+            $stmt->bindparam(5, $post['fname']);
+            $stmt->bindparam(6, $post['sname']);
+            $stmt->bindparam(7, $post['room']);
+            $stmt->bindparam(8, $signupdate);
 
             $stmt->execute(); //run the query to insert
             $conn = null; //closes the connection so it cant be abuse
@@ -62,9 +63,9 @@
 
     function login($conn, $post){
         try {
-            $sql = "SELECT patient_id, password FROM patient_users WHERE email = ?"; //set up the sql statement
+            $sql = "SELECT staff_id, password FROM staff_users WHERE username = ?"; //set up the sql statement
             $stmt = $conn->prepare($sql); //prepares the statement
-            $stmt->bindparam(1, $post['email']); //binds parameters to execute
+            $stmt->bindparam(1, $post['username']); //binds parameters to execute
             $stmt->execute(); //run the sql code
             $result = $stmt->fetch(PDO::FETCH_ASSOC); //bring back results
             $conn = null; //nulls off the connection so can't be abused
@@ -100,12 +101,12 @@
 
     }
 
-    function audtitor($conn, $patid, $code, $long){ //on doing any action, the auditor logs it
-        $sql = "INSERT INTO audit (date, patient_id, code, longdesc) VALUES (?,?,?,?)"; //prepared statement
+    function audtitor($conn, $staffid, $code, $long){ //on doing any action, the auditor logs it
+        $sql = "INSERT INTO staff_audit (date, staff_id, code, longdesc) VALUES (?,?,?,?)"; //prepared statement
         $stmt = $conn->prepare($sql); //prepare to sql
         $date = date("Y-m-d"); //exact structure that a mysql date field accepts
         $stmt->bindparam(1, $date); //bind params for security
-        $stmt->bindparam(2, $patid);
+        $stmt->bindparam(2, $staffid);
         $stmt->bindparam(3, $code);
         $stmt->bindparam(4, $long);
 
@@ -115,13 +116,13 @@
     }
 
 
-    function getnewuserid($conn, $email){ //upon registering, this retrieves the userid from
-        $sql = "SELECT patient_id FROM patient_users WHERE email = ?";
+    function getnewuserid($conn, $username){ //upon registering, this retrieves the userid from
+        $sql = "SELECT staff_id FROM staff_users WHERE username = ?";
         $stmt = $conn->prepare($sql); //prepares
-        $stmt->bindparam(1, $email);
+        $stmt->bindparam(1, $username);
         $stmt->execute(); //run sql code
         $result = $stmt->fetch(PDO::FETCH_ASSOC); //bring back results
         $conn = null; //closes the connection to prevent abuse
-        return $result['patient_id'];
+        return $result['staff_id'];
     }
 
