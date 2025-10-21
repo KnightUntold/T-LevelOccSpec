@@ -11,6 +11,13 @@
     }
 
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
+
+        $tmp = $_POST["app_date"]. ' ' .$_POST["app_time"]; //turn app_date and time into epoch time
+        $epoch_time = strtotime($tmp);
+
+        echo $epoch_time;
+        echo time();
+
         try {
             new_app(dbconnect_insert(), $_POST); //calling a subroutine and passing another subroutine through it because if the connection is successful, it sends $conn
             $_SESSION['usermessage'] = "SUCCESS: Appointment booked!";
@@ -62,15 +69,7 @@
                 echo "<option value='09:00'>09:00</option>";
                 echo "</select>";
 
-echo "<br><label for='app_reason'>Reason for Appointment:</label><br>";
-                echo " <textarea cols='46' rows='8' name='app_reason' id='app_reason' required='true' placeholder='Please Enter the reason for appointment:' maxlength= '500'></textarea>";
 
-
-
-                echo "<br><label for='accom'>Accommodations:</label><br>";
-                echo " <textarea cols='46' rows='8' name='accom' id='accom' placeholder = 'Please let us know about any accomidations you may need:' maxlength= '500'></textarea>";
-
-                echo "<br><input type='submit' name='submit' id='submit' value='Book Appointment'>";
 
                 echo "<select name='staff'>";
 
@@ -84,6 +83,17 @@ echo "<br><label for='app_reason'>Reason for Appointment:</label><br>";
 
                     echo "</select>";
                 }
+
+
+                echo "<br><label for='app_reason'>Reason for Appointment:</label><br>";
+                echo " <textarea cols='46' rows='8' name='app_reason' id='app_reason' required='true' placeholder='Please Enter the reason for appointment:' maxlength= '500'></textarea>";
+
+
+
+                echo "<br><label for='accom'>Accommodations:</label><br>";
+                echo " <textarea cols='46' rows='8' name='accom' id='accom' placeholder = 'Please let us know about any accomidations you may need:' maxlength= '500'></textarea>";
+
+                echo "<br><input type='submit' name='submit' id='submit' value='Book Appointment'>";
 
             echo "</form>";
 
