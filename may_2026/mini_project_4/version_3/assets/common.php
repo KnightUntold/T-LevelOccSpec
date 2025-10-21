@@ -171,16 +171,14 @@ function staff_getter($conn){
 
 function commit_booking($conn, $epoch){
     try {
-        $sql = "INSERT INTO pat_app (appointment_kind, reason, preferred_contact, app_date, app_time, accomidations)
-                    VALUES (?,?,?,?,?,?)"; //prepared statemen, this is the best way to prevent sql injections
+        $sql = "INSERT INTO pat_app (patient_id, staff_id, appointmentdate, bookedon)
+                    VALUES (?,?,?,?)"; //prepared statemen, this is the best way to prevent sql injections
         $stmt = $conn->prepare($sql); //prepare to sql
 
-        $stmt->bindparam(1, $post['app_kind']);//bind params for security
-        $stmt->bindparam(2, $post['app_reason']);
-        $stmt->bindparam(3, $post['pref_con']);
-        $stmt->bindparam(4, $post['app_date']);
-        $stmt->bindparam(5, $post['app_time']);
-        $stmt->bindparam(6, $post['accom']);
+        $stmt->bindparam(1, $_SESSION['patid']);//bind params for security
+        $stmt->bindparam(2, $post['staff_id']);
+        $stmt->bindparam(3, $post['appointmentdate']);
+        $stmt->bindparam(4, $post['bookedon']);
 
         $stmt->execute(); //run the query to insert
         header('Location: booked_page.php');

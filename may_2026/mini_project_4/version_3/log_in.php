@@ -12,9 +12,9 @@
     } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $usr = login(dbconnect_select(), $_POST);
 
-        if ($usr && hasPassword($_POST['password'], $usr['password'])) { //this condition isnt being met which means no one can log in
+        if ($usr && password_verify($_POST['password'], $usr['password'])) { //this condition isnt being met which means no one can log in
             $_SESSION['user'] = true;
-            $_SESSION['usermessage'] = "SUCCESS: User Successfully Logged In!";
+            $_SESSION['usermessage'] = "SUCCESS: User Successfully Logged In!" . $_SESSION['patid'];
             $_SESSION['patid'] = $usr['patient_id'];
             audtitor(dbconnect_insert(), $_SESSION['patid'], "log", "User has successfully logged in");
             header('Location: login_index.php');
