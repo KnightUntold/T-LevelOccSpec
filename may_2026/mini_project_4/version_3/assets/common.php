@@ -156,7 +156,7 @@ function getnewuserid($conn, $email){ //upon registering, this retrieves the use
 function staff_getter($conn){
     //function to get all staff suitable for an appointment
 
-    $sql = "SELECT staff_id, staff_type, fname, sname, room FROM staff_users WHERE role !=? ORDER BY role DESC";
+    $sql = "SELECT staff_id, staff_type, fname, sname, room FROM staff_users WHERE staff_type !=? ORDER BY staff_type DESC";
     //get all staff from database where role does NOT equal to "adm" - this is an admin role, unbookable
     $stmt = $conn->prepare($sql);
     $exclude_role = "adm";
@@ -167,5 +167,30 @@ function staff_getter($conn){
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC); //adding all fetches everything person that matches the requirements needed
     $conn = null;
     return $result;
+}
+
+function commit_booking($conn, $epoch){
+    try {
+        $sql = "INSERT INTO pat_app (appointment_kind, reason, preferred_contact, app_date, app_time, accomidations)
+                    VALUES (?,?,?,?,?,?)"; //prepared statemen, this is the best way to prevent sql injections
+        $stmt = $conn->prepare($sql); //prepare to sql
+
+        $stmt->bindparam(1, $post['app_kind']);//bind params for security
+        $stmt->bindparam(2, $post['app_reason']);
+        $stmt->bindparam(3, $post['pref_con']);
+        $stmt->bindparam(4, $post['app_date']);
+        $stmt->bindparam(5, $post['app_time']);
+        $stmt->bindparam(6, $post['accom']);
+
+        $stmt->execute(); //run the query to insert
+        header('Location: booked_page.php');
+        $conn = null; //closes the connection so it cant be abused
+    } catch (PDOException $e) {
+        error_log("audit database error: " . $e->getMessage()); //log the error
+        throw new Exception("audit database error: " . $e); //throw the exception
+    } catch (Exception $e) {
+        error_log("auditing error: " . $e->getMessage()); //log the error
+        throw new Exception("auditing error: " . $e->getMessage()); //throw the exception
+    }
 }
 
