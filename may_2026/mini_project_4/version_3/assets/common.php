@@ -4,7 +4,7 @@ function new_app($conn, $post)
 {
     try {
         $sql = "INSERT INTO appointments (appointment_kind, reason, preferred_contact, app_date, app_time, accomidations)
-                    VALUES (?,?,?,?,?,?)"; //prepared statemen, this is the best way to prevent sql injections
+                    VALUES (?,?,?,?,?,?)"; //prepared statement, this is the best way to prevent sql injections
         $stmt = $conn->prepare($sql); //prepare to sql
 
         $stmt->bindparam(1, $post['app_kind']);//bind params for security
@@ -170,25 +170,74 @@ function staff_getter($conn){
 }
 
 function commit_booking($conn, $epoch){
-    try {
         $sql = "INSERT INTO pat_app (patient_id, staff_id, appointmentdate, bookedon)
                     VALUES (?,?,?,?)"; //prepared statemen, this is the best way to prevent sql injections
         $stmt = $conn->prepare($sql); //prepare to sql
 
         $stmt->bindparam(1, $_SESSION['patid']);//bind params for security
-        $stmt->bindparam(2, $post['staff_id']);
-        $stmt->bindparam(3, $post['appointmentdate']);
-        $stmt->bindparam(4, $post['bookedon']);
+        $stmt->bindparam(2, $_POST['staff_id']);
+        $stmt->bindparam(3, $epoch);
+        $tmp = time();
+        $stmt->bindparam(4, $tmp);
 
         $stmt->execute(); //run the query to insert
-        header('Location: booked_page.php');
         $conn = null; //closes the connection so it cant be abused
-    } catch (PDOException $e) {
-        error_log("audit database error: " . $e->getMessage()); //log the error
-        throw new Exception("audit database error: " . $e); //throw the exception
-    } catch (Exception $e) {
-        error_log("auditing error: " . $e->getMessage()); //log the error
-        throw new Exception("auditing error: " . $e->getMessage()); //throw the exception
+        return true;
+}
+
+
+
+function appt_getter($conn){
+    // function to get all staff suitable for an appointment
+
+$sql = "SELECT p.pat_app_id, p.appointmentdate, p.bookedon, s.staff_type, s.fname, s.sname, s.room FROM pat_app p 
+    JOIN staff_users s ON p.staff_id = s.staff_id WHERE p.patient_id = ? ORDER BY p.appointmentdate ASC";
+    // the p. and s. selects different fields from the 2 tables (pat_app and staff_users) which is known by putting the letters
+    // after them when they are called. pat_app is called from and joins the table to staff_users to get the staff information
+    // so it can displayed to the user to see when there appointments are.
+    // ASC sorts the results in ascending order
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindparam(1, $_SESSION['patid']);
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC); //fetch all iss important to ensure that all the data from the db is pulled not jsut the first one
+    $conn = null;
+    if($result) {
+        return $result;
+    } else {
+        return false;
     }
 }
 
+function cancel_appt($conn, $aptid){
+    $sql = "DELETE FROM pat_app WHERE pat_app_id = ?"; //sql statement to delete the appointment from pat_app based off the pat_app_id
+    $stmt = $conn->prepare($sql); //prepares the sql to bind param
+    $stmt->bindparam(1, $aptid); //binds the params for security
+    $stmt->execute(); //executes the pdo statement
+    $conn = null; //closes the connection so it can't be abused
+    return true;
+}
+
+function appt_fetch($conn, $bookid){
+    $sql = "SELECT * FROM pat_app WHERE pat_app_id = ?";
+    //gets a booking based off pat_app_id
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindparam(1, $bookid);
+
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $conn = null;
+    return $result;
+}
+
+function appt_update($conn, $bookid, $apptime){
+    $sql = "UPDATE pat_app SET staff_id = ?, appointmentdate = ? WHERE pat_app_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindparam(1, $_POST['staff']);
+    $stmt->bindparam(2, $apptime);
+    $stmt->bindparam(3, $bookid);
+    $stmt->execute();
+    $conn = null;
+    return true;
+}

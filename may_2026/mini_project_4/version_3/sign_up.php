@@ -8,8 +8,8 @@
 
         if(!email_ver(dbconnect_select(), $_POST['email'])) {
             if (reg_user(dbconnect_insert(), $_POST)) {
-                audtitor(dbconnect_insert(),getnewuserid(dbconnect_select(), $_POST['username']), "reg","New user registered");
-                $_SESSION['usermessage'] = "USER CREATED SUCCESSFULLY";
+                audtitor(dbconnect_insert(),getnewuserid(dbconnect_select(), $_POST['email']), "reg","New user registered");
+                $_SESSION['email'] = "USER CREATED SUCCESSFULLY";
                 header('Location: log_in.php');
                 exit;
 

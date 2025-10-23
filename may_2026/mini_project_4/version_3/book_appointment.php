@@ -4,28 +4,29 @@
     require_once "assets/dbconn.php"; //calls in the connection to the database and common.php where a lot of subroutines are
     require_once "assets/common.php"; //this improves the reuseability of code and lessens processing time
 
-    if (!isset($_SESSION['user'])){ //this redirects you to the login page if you aren't logged in so that a unlogged in user can't input into the database
+    if (!isset($_SESSION['patid'])){ //this redirects you to the login page if you aren't logged in so that a unlogged in user can't input into the database
         $_SESSION['usermessage'] = "ERROR: You need to be logged in!"; //this improves the security of the system because someone
         header("Location: log_in.php"); //trying to break into the system can't input anything into the database without a login
         exit;
-    }
-
-    if ($_SERVER["REQUEST_METHOD"] === "POST"){ //this needs to be at the top because it needs to load first to ensure that the code runs as intended
+    } elseif ($_SERVER["REQUEST_METHOD"] === "POST"){ //this needs to be at the top because it needs to load first to ensure that the code runs as intended
 
         try {
 
             $tmp = $_POST["app_date"]. ' ' .$_POST["app_time"]; //turn app_date and time into epoch time
             $epoch_time = strtotime($tmp);
             if (commit_booking(dbconnect_insert(), $epoch_time)){
-                $_SESSION['usermessage'] = "ERROR: Booking Successful!";
+                $_SESSION['usermessage'] = "SUCCESS: Booking Successful!";
                 header("Location: booked_page.php");
                 exit;
             } else {
                 $_SESSION['usermessage'] = "ERROR: Booking failed!";
+                header("Location: booked_page.php");
             }
 
         } catch (PDOException $e) {
             $_SESSION['usermessage'] = "ERROR: " . $e->getMessage(); //to catch errors
+        } catch (Exception $e) {
+            $_SESSION['usermessage'] = "ERROR: " . $e->getMessage();
         }
 
        /* try {
@@ -56,25 +57,13 @@
 
                 $staff = staff_getter(dbconnect_select());
 
-                echo "<br><label for='app_kind'>Kind of Appointment:</label><br>";
-                echo "<select name='app_kind' id='app_kind' required='true'>";
-                echo "<option value='' disabled selected>Please Enter the kind of appointment you need:</option>";
-                echo "<option value='gp'>Gp Appointment</option>";
-                echo "<option value='vaccine'>Vaccination</option>";
-                echo "</select>";
 
-                echo "<br><label for='pref_con'>Preferred Contact Method:</label><br>";
-                echo "<select name='pref_con' id='pref_con' required='true'>";
-                echo "<option value='' disabled selected>Please pick a Prefered Contact Method:</option>";
-                echo "<option value='email'>Email</option>";
-                echo "<option value='phone'>Phone</option>";
-                echo "</select>";
 
                 echo "<br><label for='app_date'>Appointment Date:</label><br>";
                 echo "<input type='date' name='app_date' id='app_date'>";
 
                 echo "<br><label for='app_time'>Appointment Time:</label><br>";
-                echo "<input type='date' name='app_time' id='app_time'>";
+                echo "<input type='time' name='app_time' id='app_time'>";
 
 
 
@@ -86,19 +75,10 @@
                     } else if ($staf['role'] = "nur"){
                         $role = "Nurse";
                     }
-                    echo "<option value =" .$staf['staff_id']. ">" .$role. " ". $staf['sname']. " ". $staf['fname']. " Room".$staf['room']. "</option>";
+                    echo "<option value =" .$staf['staff_id']. ">" .$role. " ". $staf['sname']. " ". $staf['fname']. " Room ".$staf['room']. "</option>";
 
                     echo "</select>";
                 }
-
-
-                echo "<br><label for='app_reason'>Reason for Appointment:</label><br>";
-                echo " <textarea cols='46' rows='8' name='app_reason' id='app_reason' required='true' placeholder='Please Enter the reason for appointment:' maxlength= '500'></textarea>";
-
-
-
-                echo "<br><label for='accom'>Accommodations:</label><br>";
-                echo " <textarea cols='46' rows='8' name='accom' id='accom' placeholder = 'Please let us know about any accomidations you may need:' maxlength= '500'></textarea>";
 
                 echo "<br><input type='submit' name='submit' id='submit' value='Book Appointment'>";
 
