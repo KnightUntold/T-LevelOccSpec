@@ -16,6 +16,7 @@
             $epoch_time = strtotime($tmp);
             if (commit_booking(dbconnect_insert(), $epoch_time)){
                 $_SESSION['usermessage'] = "SUCCESS: Booking Successful!";
+                audtitor(dbconnect_insert(), $_SESSION['patid'], "apt", "User has booked an appointment");
                 header("Location: booked_page.php");
                 exit;
             } else {
@@ -66,8 +67,8 @@
                 echo "<input type='time' name='app_time' id='app_time'>";
 
 
-
-                echo "<br><select name='staff'>";
+                echo "<br><label for='staff'>Select a Staff Member:</label>";
+                echo "<br><select name='staff' id='staff'>";
 
                 foreach ($staff as $staf) {
                     if ($staf['role'] = "doc"){
@@ -77,8 +78,9 @@
                     }
                     echo "<option value =" .$staf['staff_id']. ">" .$role. " ". $staf['sname']. " ". $staf['fname']. " Room ".$staf['room']. "</option>";
 
-                    echo "</select>";
+
                 }
+                 echo "</select>";
 
                 echo "<br><input type='submit' name='submit' id='submit' value='Book Appointment'>";
 

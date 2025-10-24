@@ -15,9 +15,10 @@ if (!isset($_SESSION['patid'])){ //this redirects you to the login page if you a
 
         $tmp = $_POST["app_date"]. ' ' .$_POST["app_time"]; //turn app_date and time into epoch time
         $epoch_time = strtotime($tmp);
-        if (appt_update(dbconnect_insert(), $_SESSION['apptid'], $epoch_time)){
+        if (appt_update(dbconnect_update(), $_SESSION['apptid'], $epoch_time)){
             $_SESSION['usermessage'] = "SUCCESS: Appointment Updated Successfully!";
             unset($_SESSION['apptid']);
+            audtitor(dbconnect_insert(), $_SESSION['patid'], "apt", "User has changed appointment");
             header("Location: booked_page.php");
             exit;
         } else {
@@ -88,10 +89,11 @@ foreach ($staff as $staf) {
         $selected = "";
     }
 
-    echo "<option value =" .$staf['staff_id']. " " .$selected. ">". $staf['sname']. " ". $staf['fname']. " Room".$staf['room']. "</option>";
+    echo "<option value =" .$staf['staff_id']. ">" .$role. " ". $staf['sname']. " ". $staf['fname']. " Room ".$staf['room']. "</option>";
 
-    echo "</select>";
 }
+
+echo "</select>";
 
 echo "<br><input type='submit' name='submit' id='submit' value='Update Appointment'>";
 

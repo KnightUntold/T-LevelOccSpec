@@ -12,7 +12,8 @@
                         echo "<li><a class='white' href='sign_up.php'>Sign Up</a></li>";
                     } else {
                         echo "<li><a class='white' href='login_index.php'>Home</a></li>";
-                        echo "<li><a class='white' href='booked_page.php'>Appointments</a></li>";
+                        echo "<li><a class='white' href='book_appointment.php'>Book an Appointment</a></li>";
+                        echo "<li><a class='white' href='booked_page.php'>View Appointments</a></li>";
                         echo "<li><a class='white' href=logout.php>Log out</a></li>";
                     }
                 echo "</ul>";

@@ -14,6 +14,7 @@
             try {
                 if (cancel_appt(dbconnect_delete(), $_POST['apptid'])) {
                     $_SESSION['usermessage'] = "SUCCESS: Appointment has been cancelled.";
+                    audtitor(dbconnect_insert(), $_SESSION['patid'], "apt", "User has successfully cancelled appointment.");
                 } else {
                     $_SESSION['usermessage'] = "ERROR: Could not be able to execute complete this action";
                 }
@@ -68,8 +69,8 @@
                                         echo "<td> With: " . $role . " " . $appt['fname'] . " " . $appt['sname'] . "</td>";
                                         echo "<td> in: " . $appt['room'] . "</td>";
                                         echo "<td><input type='hidden' name='apptid' value=".$appt['pat_app_id']."> 
-                                           <input type='submit' name='appdelete' value='Cancel Appt' />
-                                           <input type='submit' name='appchange' value='Change Appt' /></td>";
+                                           <input type='submit' name='apptdelete' value='Cancel Appt' />
+                                           <input type='submit' name='apptchange' value='Change Appt' /></td>";
 
                                         echo "</tr>";
                                     echo "</form>";

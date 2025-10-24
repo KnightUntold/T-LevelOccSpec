@@ -175,7 +175,7 @@ function commit_booking($conn, $epoch){
         $stmt = $conn->prepare($sql); //prepare to sql
 
         $stmt->bindparam(1, $_SESSION['patid']);//bind params for security
-        $stmt->bindparam(2, $_POST['staff_id']);
+        $stmt->bindparam(2, $_POST['staff']);
         $stmt->bindparam(3, $epoch);
         $tmp = time();
         $stmt->bindparam(4, $tmp);
