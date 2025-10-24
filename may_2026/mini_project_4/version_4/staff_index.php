@@ -25,7 +25,7 @@
 
     echo "<body>";
 
-        require "header.php";
+        require "assets/header.php";
 
         echo "<h3>this is the staff index :D</h3>";
 
@@ -37,7 +37,7 @@
             echo $e->getMessage();
         }
 
-        require "footer.php";
+        require "assets/footer.php";
 
     echo "</body>";
 

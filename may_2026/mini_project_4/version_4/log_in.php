@@ -39,7 +39,7 @@
 
         echo "<body>";
 
-            require "header.php";
+            require "assets/header.php";
 
             echo "<br>";
             echo user_message();
@@ -65,7 +65,7 @@
                 echo "<br><input type='submit' name='submit' id='submit' value='Log In'>";
             echo "</form>";
 
-            require "footer.php";
+            require "assets/footer.php";
 
         echo "</body>";
 

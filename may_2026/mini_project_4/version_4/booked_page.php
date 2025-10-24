@@ -43,7 +43,7 @@
 
                 echo "<body>";
 
-                    require "header.php";
+                    require "assets/header.php";
 
                         echo "<h2> Primary Oaks Surgery - Your Bookings</h2>";
 
@@ -87,7 +87,7 @@
                         echo $e->getMessage();
                     }
 
-                    require "footer.php";
+                    require "assets/footer.php";
 
                 echo "</body>";
 

@@ -52,7 +52,7 @@
 
         echo "<body>";
 
-            require "header.php";
+            require "assets/header.php";
 
             echo "<form action='' method='post' class='center'>";
 
@@ -90,7 +90,7 @@
             echo user_message();
             echo "<br>";
 
-            require "footer.php";
+            require "assets/footer.php";
 
         echo "</body>";
 

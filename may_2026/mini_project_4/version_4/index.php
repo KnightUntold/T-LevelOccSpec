@@ -22,7 +22,7 @@
 
             echo "<body>";
 
-                require "header.php";
+                require "assets/header.php";
 
                 echo "<h1 class='center'>Book a GP appointment</h1>";
                 echo "<a href='sign_up.php' class='button back_005eb8 white'>Sign Up</a>";
@@ -36,7 +36,7 @@
                     echo $e->getMessage();
                 }
 
-                require "footer.php";
+                require "assets/footer.php";
 
             echo "</body>";
 

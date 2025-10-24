@@ -56,7 +56,7 @@ echo "</head>";
 
 echo "<body>";
 
-require "header.php";
+require "assets/header.php";
 
 $appt = appt_fetch(dbconnect_select(), $_SESSION['apptid']);
 
@@ -103,7 +103,7 @@ echo "<br>";
 echo user_message();
 echo "<br>";
 
-require "footer.php";
+require "assets/footer.php";
 
 echo "</body>";
 

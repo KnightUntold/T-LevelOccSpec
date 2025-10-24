@@ -25,7 +25,7 @@
 
         echo "<body>";
 
-            require "header.php";
+            require "assets/header.php";
 
                 echo "<h3>Book an Appointment Today!</h3>";
                 echo "<a href='book_appointment.php' class='button back_005eb8 white'>Book an Appointment</a>";
@@ -38,7 +38,7 @@
                     echo $e->getMessage();
                 }
 
-            require "footer.php";
+            require "assets/footer.php";
 
         echo "</body>";
 
