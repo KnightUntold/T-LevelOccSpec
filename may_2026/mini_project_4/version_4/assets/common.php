@@ -241,3 +241,18 @@ function appt_update($conn, $bookid, $apptime){
     $conn = null;
     return true;
 }
+
+function aud_getter($conn){
+    //function to get all staff suitable for an appointment
+
+    $sql = "SELECT audit_id, patient_id, code, longdesc, date FROM audit WHERE patient_id = ? ORDER BY date ASC";
+    //get all staff from database where role does NOT equal to "adm" - this is an admin role, unbookable
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindparam(1, $_SESSION['patid']);
+
+    $stmt->execute();
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC); //adding all fetches everything person that matches the requirements needed
+    $conn = null;
+    return $result;
+}
