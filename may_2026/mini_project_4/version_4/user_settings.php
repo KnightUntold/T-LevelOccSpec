@@ -27,11 +27,11 @@
 
             echo "<p>View Audit</p>";
 
-            echo "<input type='submit' name='useraudit' value='View your Audits'>";
+            echo "<a href='user_settings_opts/user_viewaudits.php'><button name='useraudit' >View your Audits</button></a>";
 
             echo "<p>Change Personal Details</p>";
 
-            echo "<input type='submit' name='userpasschange' value='Change Password' />";
+            echo "<a href='user_settings_opts/user_changepassword.php'><button  name='userpasschange'>Change Password</button></a>";
 
             echo "<input type='submit' name='userpasschange' value='Change Name' />";
 
@@ -50,6 +50,7 @@
             }
 
             require "assets/footer.php";
+
 
         echo "</body>";
 
