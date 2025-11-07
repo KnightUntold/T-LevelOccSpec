@@ -1,0 +1,51 @@
+FUNCTIONAL AND NON FUNCTIONAL REQUIREMENTS 
+
+
+VERSIONING/VERSIONS 
+
+  version 1 will be...
+  version 2 will be... etc
+
+  could do a table
+
+  what and why is important 
+
+  version 1 needs to start with the database because everything else runs off the database. its the backbone. 
+
+  version 1  needs user registration 
+  
+  version 1 is the pure essential your system cant exist without. 
+  
+  version 2 - login, bookings, cancellations STUFF THE SYSTEM MUST DO 
+  
+  version 3 - altering appointments, branding, audit, css NICE TO HAVES, BELLS AND WHISTLES 
+  
+  can do more then 3 but need at least 3 
+
+
+LIMITATIONS -> alternatives
+
+  DB - environment variables
+
+  password hashs
+
+  in a production environment i would encode the user and password in an environment variable 
+
+  VERSION 1
+
+  what do you plan to make: 
+
+  Document/ describe what you made. 
+
+  what changed and why. 
+
+  evaluate the version. 
+
+  what will change next version
+
+    REPEAT FOR OTHER VERSIONS :/ 
+
+export db after each version and write it down that they can have a peak
+
+
+
