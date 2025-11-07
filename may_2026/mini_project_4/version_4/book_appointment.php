@@ -14,7 +14,7 @@
 
             $tmp = $_POST["app_date"]. ' ' .$_POST["app_time"]; //turn app_date and time into epoch time
             $epoch_time = strtotime($tmp);
-            if (commit_booking(dbconnect_insert(), $epoch_time)){
+            if (commit_booking(dbconnect_insert(), $epoch_time)){ //puts an if statement so that if it commits successfully to the db it will run the right code
                 $_SESSION['usermessage'] = "SUCCESS: Booking Successful!";
                 audtitor(dbconnect_insert(), $_SESSION['patid'], "apt", "User has booked an appointment");
                 header("Location: booked_page.php");

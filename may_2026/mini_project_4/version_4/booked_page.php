@@ -14,7 +14,7 @@
             try {
                 if (cancel_appt(dbconnect_delete(), $_POST['apptid'])) {
                     $_SESSION['usermessage'] = "SUCCESS: Appointment has been cancelled.";
-                    audtitor(dbconnect_insert(), $_SESSION['patid'], "apt", "User has successfully cancelled appointment.");
+                    audtitor(dbconnect_insert(), $_SESSION['patid'], "apt", "User has successfully cancelled appointment."); //adds an audit to log what the user is doing
                 } else {
                     $_SESSION['usermessage'] = "ERROR: Could not be able to execute complete this action";
                 }

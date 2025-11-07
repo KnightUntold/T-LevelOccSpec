@@ -1,8 +1,10 @@
 <?php
 
+
+// NOTE TO SELF no try, catches in functions, the try catches need to be in code
 function new_app($conn, $post)
 {
-    try {
+    try { //dont use this its old, also dumbarse
         $sql = "INSERT INTO appointments (appointment_kind, reason, preferred_contact, app_date, app_time, accomidations)
                     VALUES (?,?,?,?,?,?)"; //prepared statement, this is the best way to prevent sql injections
         $stmt = $conn->prepare($sql); //prepare to sql
