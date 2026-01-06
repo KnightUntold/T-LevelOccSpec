@@ -1,0 +1,35 @@
+body {
+    background-color: #e9ead9;
+}
+
+.nav_bar {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.nav_bar li {
+    float: left;
+    padding: 10px;
+    list-style-type: none;
+}
+.nav_bar li a {
+    text-decoration: none;
+}
+
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #99c658;
+}
+
+.nav_color {
+    background-color: #99c658;
+}
+
+
