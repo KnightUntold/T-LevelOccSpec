@@ -1,4 +1,7 @@
 <?php
+
+use mini_project_4\version_2\Calendar;
+
 include 'Calendar.php';
 $calendar = new Calendar(date("Y-m-d"));
 $calendar->add_event('Birthday', '2025-10-22', 1, 'green');

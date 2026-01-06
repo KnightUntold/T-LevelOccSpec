@@ -24,7 +24,7 @@ echo "<body>";
 
 require "assets/header.php";
 
-echo "<h3>index page</h3>";
+echo "<h3>zoo</h3>";
 echo user_message();
 
 try {
