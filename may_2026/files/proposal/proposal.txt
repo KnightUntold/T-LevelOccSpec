@@ -189,3 +189,27 @@ USER ACCEPTANCE CRITERIA UAC
 
 make it clear number it
 
+KPI KEY PERFORMANCE INDICATORS
+
+kpis are whats businesses expect to increase from your system
+
+increased ratings
+
+increased user account creation
+
+increased bookings
+
+increased sales
+
+number of referrals
+
+
+USER ACCEPTANCE CRITERIA UAC
+
+make it clear number it
+
+
+EVALUATION OF FUTURE DEVELOPMENT
+
+focus on other stuff, personal if you have time.
+

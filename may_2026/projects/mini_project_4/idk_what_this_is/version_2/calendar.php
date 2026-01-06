@@ -1,5 +1,5 @@
 <?php //calendar template from internet to test
-namespace idk_what_this_is\version_2;
+namespace projects\mini_project_4\idk_what_this_is\version_2;
 class Calendar
 {
 

@@ -1,6 +1,6 @@
 <?php
 
-use idk_what_this_is\version_2\Calendar;
+use projects\mini_project_4\idk_what_this_is\version_2\Calendar;
 
 include 'Calendar.php';
 $calendar = new Calendar(date("Y-m-d"));
