@@ -1,29 +1,48 @@
 <?php
 
-    session_start();
+    session_start(); //connects to session for session infomation
 
     require_once("assets/dbconn.php");
     require_once("assets/common.php");
 
-    if (isset($_SESSION['user'])) {
-        $_SESSION['ERROR'] = "ERROR: You are already logged in!";
-        header('Location: login_index.php');
+    if (isset($_SESSION['user'])) { //checks to see if the user is already loged in
+        $_SESSION['ERROR'] = "ERROR: You are already logged in!"; //shows message to user
+        header('Location: login_index.php'); //redirects them
         exit; //stop further execution
     } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $usr = login(dbconn_select(), $_POST);
+        try {
+            $usr = login(dbconn_select(), $_POST); // login subroutine done here so we can use parts of the data if successful
 
-        if ($usr && password_verify($_POST['password'], $usr['password'])) { //this condition isnt being met which means no one can log in
-            $_SESSION['user'] = true;
-            $_SESSION['usermessage'] = "SUCCESS: User Successfully Logged In!" . $_SESSION['user_id'];
-            $_SESSION['user_id'] = $usr['user_id'];
-            header('Location: login_index.php');
+            if ($usr && password_verify($_POST['password'], $usr['password'])) { //this condition isnt being met which means no one can log in
+                $_SESSION['user'] = $usr['user_id'];
+                $_SESSION['usermessage'] = "SUCCESS: User Successfully Logged In!"; //shows a success message to the user
+                header('Location: login_index.php'); //redirects on success
+                exit; //ensures code stops and helps redirect
+
+            } elseif(!$usr) {
+                $_SESSION['usermessage'] = "ERROR: User not found!"; //displays message to user
+                header("Location: login.php"); //redirects user back to the login page
+                exit; //stops further execution
+            } else {
+                $_SESSION['usermessage'] = "ERROR: Wrong Email or Password!";
+                header('Location: login.php');
+                exit; //stop further execution
+            }
+
+            //catches errors and sends messages to the user
+        } catch(PDOException $e) {
+            $_SESSION['usermessage'] = "ERROR: " . $e->getMessage();
+            header("Location: login.php");
             exit;
-        } else {
-            $_SESSION['usermessage'] = "ERROR: Wrong Email or Password!";
-            header('Location: index.php');
-            exit; //stop further execution
+        } catch(Exception $e) {
+            $_SESSION['usermessage'] = "ERROR: " . $e->getMessage();
+            header("Location: login.php");
+            exit;
         }
     }
+
+
+
 
     echo "<!DOCTYPE html>";
 
@@ -51,9 +70,6 @@
 
             echo "<br><label for='password'>Password:</label><br>";
             echo "<input type='password' name='password' id='password' required>";
-
-            echo "<br><label for='conpassword'>Confirm Password:</label><br>";
-            echo "<input type='password' name='conpassword' id='conpassword' required>";
 
             echo "<br><input type='submit' name='submit' id='submit' value='Log In'>";
 
